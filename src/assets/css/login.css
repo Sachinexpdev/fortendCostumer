@@ -1,0 +1,186 @@
+.login {
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.loginheadercontent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 90%;
+    margin: auto;
+}
+
+.loginheadercontent svg {
+    display: none;
+    cursor: pointer;
+}
+
+.LoginHeader {
+    height: 80px;
+    background: linear-gradient(to right, #aa3bff, #7b63fd);
+    color: #fff;
+}
+
+.LoginHeader p {
+    font-size: 20px;
+}
+
+.LoginHeader a {
+    color: #fff;
+    margin-left: 5px;
+    text-decoration: none;
+}
+
+.login-body {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-body form {
+    width: 400px;
+    border: 1px solid #ece9ff;
+    padding: 2rem 3rem;
+}
+
+.login-body>form>h2 {
+    font-size: 30px;
+    margin-bottom: 1rem;
+}
+
+.login-body form input {
+    height: 38px;
+    width: 100%;
+    display: block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+}
+
+.login-body form input[type="email"],
+.login-body form input[type="password"],
+.login-body form input[type="text"] {
+    margin-bottom: 1rem;
+    border: 1px solid #7966ff;
+    padding: 0rem 1rem;
+}
+
+.inp-date {
+    margin-bottom: 1rem !important;
+    border: 1px solid #7966ff !important;
+    padding: 0rem 1rem !important;
+}
+
+.inp-select {
+    margin-bottom: 1rem;
+    background: none;
+    height: 38px;
+    width: 100%;
+    display: block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    border: 1px solid #7966ff !important;
+}
+
+.login-body form input[type="submit"] {
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sign-in-button {
+    background-color: #ff4f4f;
+}
+
+.or {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0rem;
+}
+
+.or span {
+    flex: 1;
+    height: 2px;
+    display: block;
+    background-color: #ece9ff;
+}
+
+.or p {
+    margin: 0rem 10px;
+    text-transform: uppercase;
+}
+
+.sign-in-button-with-google {
+    background-color: #7966ff;
+}
+
+.link-area {
+    font-size: 19px;
+    margin-top: 1rem;
+}
+
+.link-area,
+.link-area a {
+    color: #7b63fd;
+}
+
+.link-area a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .LoginHeader p {
+        display: none;
+    }
+    .loginheadercontent svg {
+        display: block;
+    }
+    .login-body form {
+        width: 90%;
+        padding: 3rem 0rem;
+        border-color: transparent;
+    }
+    .login-body {
+        align-items: flex-start;
+    }
+    .link-area {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .link-area {
+        font-size: 17px;
+    }
+}
+
+.laoder {
+    background: #000000cc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+.laoder.loader_login img {
+    width: 52px;
+    top: 50%;
+    left: 48%;
+    position: absolute;
+}
+
+.sign-in-button-with-google {
+    color: white;
+}
+
+.login.lg-2 {
+    height: 100vh;
+}

@@ -1,0 +1,520 @@
+.profile,
+.PlanAndPackages,
+.Schedule,
+.History,
+.explore,
+.Dashboard {
+    height: 100vh;
+    background-color: #c9cfd4;
+    display: flex;
+}
+
+.profile-sidebar {
+    background-color: #fff;
+    width: 278px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 1.5rem 1rem;
+    padding-left: 2rem;
+    border-right: 1px solid rgba(203, 211, 219, 0.7);
+    border-bottom-left-radius: 30px;
+}
+
+.profile-mbl-sidebar {
+    height: 100vh;
+    background-color: #fff;
+    left: -100%;
+    transition: 0.3s ease all;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    overflow: auto;
+    display: none;
+    z-index: 9999;
+}
+
+.profile-mbl-sidebar-header-right>* {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.profile-mbl-sidebar-header-right>*+* {
+    margin-left: 1rem;
+}
+
+.profile-sidebar-body {
+    padding: 0rem 1rem;
+    margin-top: 2rem;
+    flex: 1;
+}
+
+.profile-sidebar-body>ul li+li {
+    margin-top: 2rem;
+}
+
+.profile-mbl-sidebar .profile-name span {
+    display: block;
+}
+
+.profile-mbl-sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ece9ff;
+    padding: 0rem 2rem;
+    min-height: 80px;
+}
+
+.profile-sidebar-close {
+    cursor: pointer;
+}
+
+.profile-sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.profile-pic {
+    width: 90%;
+    border: 1px solid #707070;
+    min-height: 268px;
+    position: relative;
+}
+
+.profile-pic img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-sidebar-options {
+    list-style: none;
+    margin-top: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-sidebar-options>* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+.profile-sidebar-options li {
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    margin: 0px !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.profile-sidebar-options li.activeSidebarLink {
+    background-color: #ff4f4f;
+    padding: 1rem 0rem;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem !important;
+    border-radius: 10px;
+}
+
+.profile-sidebar-options .dashboard-desktop-option {
+    margin-bottom: 4rem !important;
+}
+
+.profile-sidebar-options .dashboard-desktop-option.activeSidebarLink {
+    margin-bottom: 4rem !important;
+}
+
+.profile-sidebar-options li svg {
+    width: 30px;
+}
+
+.profile-sidebar-options li span {
+    margin-left: 13px;
+    font-size: 22px;
+    color: #040f0f;
+}
+
+.profile-sidebar-options li.activeSidebarLink>span {
+    color: #fff;
+}
+
+.profile-sidebar-options li.activeSidebarLink>svg path,
+.profile-sidebar-options li.activeSidebarLink>svg circle {
+    fill: #fff;
+}
+
+.profile-sidebar-options li+li {
+    margin-top: 1.3rem;
+}
+
+.profile-sidebar-options li:last-child {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+}
+
+.profile-sidebar .powered-by {
+    margin-top: 2rem;
+}
+
+.profile-sidebar .powered-by,
+.profile-mbl-sidebar .powered-by {
+    color: #7966ff;
+    text-align: right;
+}
+
+.profile-mbl-sidebar .powered-by {
+    padding: 1rem 1rem;
+}
+
+
+/* profile body time */
+
+.ProfileBody,
+.PlansBody,
+.ScheduleBody,
+.history-body,
+.ExploreBody,
+.DashboardBody {
+    flex: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    background: white;
+}
+
+.profile-body-header {
+    display: flex;
+    align-items: center;
+    background-color: #ece9ff;
+    justify-content: space-between;
+    min-height: 112px;
+    padding-right: 1rem;
+}
+
+.profile-body-header .burger-icon {
+    display: none;
+}
+
+.profile-body-header .profile-label {
+    display: flex;
+    width: 40.5%;
+    height: 50px;
+    align-self: flex-end;
+    position: relative;
+    z-index: 999;
+}
+
+.profile-label img {
+    position: absolute;
+    height: 100%;
+    right: -12px;
+    top: 0;
+}
+
+.profile-body-header .profile-label p {
+    background-color: #fff;
+    width: 100%;
+    border-top-right-radius: 20px;
+    padding: 0.5rem 2rem;
+}
+
+.profile-body-header .profile-label p {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.profile-body-header .profile-name span {
+    display: block;
+}
+
+.profile-body-header .profile-name span:first-child {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.profile-body-header .profile-name span:nth-child(2) {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.profile-body-header .profile-area .language {
+    margin-right: 15px;
+    margin-left: 20px;
+}
+
+.profile-information,
+.plans-information,
+.Schedule-information,
+.history-information,
+.explore-information,
+.dashboard-information {
+    flex: 1;
+    background-color: #fff;
+    padding: 2rem 0rem;
+    display: flex;
+    justify-content: center;
+}
+
+.plans-information.text-t {
+    justify-content: inherit;
+}
+
+.profile-form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form .profile-img {
+    align-self: center;
+    width: 80px;
+    height: 80px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.personal-information {
+    margin-top: 1.5rem;
+}
+
+.emergency-contact {
+    margin-top: 0.7rem;
+}
+
+.personal-information .main-heading,
+.emergency-contact .main-heading {
+    color: #040f0f;
+    font-size: 25px;
+}
+
+.personal-information .input-collection,
+.emergency-contact .input-collection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin: 1rem 0rem;
+}
+
+.personal-information .input-collection .input-wrapper label,
+.emergency-contact .input-collection .input-wrapper label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #040f0f;
+}
+
+.personal-information .input-collection .input-wrapper input,
+.emergency-contact .input-collection .input-wrapper input {
+    width: 100%;
+    border: 1px solid #7966ff;
+    height: 35px;
+    outline: none;
+    border-radius: 8px;
+    padding: 0rem 0.5rem;
+    color: #040f0f;
+}
+
+.email-input-wrapper,
+.password-input-wrapper {
+    grid-column: span 2;
+}
+
+.save-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.save-btn-wrapper button {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    padding: 0.3rem 2rem;
+    border-radius: 999px;
+    background-color: #ff4f4f;
+    outline: none;
+}
+
+@media screen and (max-width: 1600px) {
+    .profile-sidebar-options li span {
+        font-size: 19px;
+    }
+    .profile-body-header .profile-label {
+        width: 31%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .profile-form {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+    .profile-sidebar {
+        display: none;
+    }
+    .profile-mbl-sidebar {
+        display: flex;
+    }
+    .profile-body-header {
+        align-items: flex-start;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        padding-top: 2rem;
+    }
+    .header-nofication-icon {
+        margin-right: 0;
+    }
+    .profile-body-header .profile-area {
+        padding: 0rem 1.5rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .profile-body-header .profile-presentation,
+    .profile-body-header .header-setting-icon,
+    .profile-body-header .language {
+        display: none;
+    }
+    .profile-body-header .burger-icon {
+        display: block;
+        cursor: pointer;
+    }
+    .profile-body-header .profile-label {
+        width: 90%;
+        height: 30px;
+        align-self: flex-start;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .personal-information .input-collection,
+    .emergency-contact .input-collection {
+        grid-template-columns: 1fr;
+    }
+    .email-input-wrapper,
+    .password-input-wrapper {
+        grid-column: span 1;
+    }
+    .save-btn-wrapper button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .profile-body-header .profile-label p {
+        font-size: 7px;
+    }
+}
+
+
+/* 
+
+.rd-btn-main {
+    display: flex;
+    height: 50px;
+    align-self: flex-end;
+    position: relative;
+    left: -53px;
+} */
+
+.zind-9 {
+    z-index: 9;
+}
+
+.rd-btn-main .header-gym-btn-main-2 button.btn-gym-2 {
+    border: none;
+    letter-spacing: 1px;
+    background: red;
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    z-index: 99;
+    padding: 0.5rem 2rem;
+    font-size: 22px;
+    font-weight: bold;
+    border-top-right-radius: 1.7rem;
+    align-self: flex-end;
+    font-weight: 900;
+    height: 98%;
+    margin-left: -21px;
+    margin-top: 1px;
+    outline: none;
+}
+
+.modal-footer.py-footer .col-md-12.text-center button.btn-paynow {
+    background: #f93131;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.modal-footer.py-footer .col-md-12.text-center {
+    text-align: center;
+}
+
+.modal-footer.py-footer {
+    width: 100%;
+    float: left;
+}
+
+.form-group.promo-code-inp-main .form-control {
+    width: 78% !important;
+}
+
+.col-md-12.m-auto.buy-modal-main .form-group span.input-group-addon button.btn-apply-pc {
+    margin-top: 0;
+    height: 34px;
+    background-color: #f93131;
+}
+
+.form-group.promo-code-inp-main {
+    display: flex;
+}
+
+.modal-footer.py-footer {
+    margin-top: 1rem;
+}
+
+.col-md-12.m-auto.buy-modal-main .form-group {
+    margin-bottom: 0.5rem;
+}
+
+.laoder {
+    background: #000000cc;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+}
+
+.laoder img {
+    width: 52px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+.choos-img-dm .fileUploader .fileContainer button.chooseFileButton {
+    background: #7966ff;
+}
+
+.choos-img-dm .fileUploader .fileContainer {
+    box-shadow: none;
+}

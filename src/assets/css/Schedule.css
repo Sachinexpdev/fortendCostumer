@@ -1,0 +1,307 @@
+.schedule-mockup {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.schedule-mockup .dialog-box {
+    background-color: #fff;
+    width: 30%;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.schedule-mockup .dialog-box p {
+    color: #7966ff;
+    font-size: 20px;
+}
+
+.schedule-mockup .Answers-button {
+    margin-top: 1rem;
+}
+
+.schedule-mockup .Answers-button button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border: 1px solid #7966ff;
+    width: 60px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.Answers-button button:first-child {
+    margin-right: 10px;
+}
+
+.Schedule-information>.main-heading {
+    text-align: center;
+    /* font-size: 28px; */
+    font-weight: bold;
+}
+
+.Schedule-information {
+    display: block;
+    padding: 2rem;
+}
+
+.ScheduleCard {
+    background-color: #eae8e8;
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.ScheduleCard>* {
+    flex: 1;
+}
+
+.ScheduleCard .first-col {
+    display: flex;
+    align-items: center;
+}
+
+.ScheduleCard .first-col .image {
+    width: 135px;
+    height: 120px;
+    background-color: #eae8e8;
+    border-radius: 20px;
+    margin-right: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.ScheduleCard .first-col .image.cr-img-d {
+    height: 90px;
+}
+
+.ScheduleCard .first-col .image img {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image.cr-img-d.exp-add.courses-w img {
+    height: 100%;
+}
+
+.ScheduleCard .first-col>p:nth-child(2) {
+    margin-right: 1rem;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.ScheduleCard .first-col>p:nth-child(2) span,
+.ScheduleCard .first-col>p:nth-child(3) span {
+    display: block;
+    font-weight: 200;
+}
+
+.ScheduleCard .first-col>p:nth-child(3) {
+    font-weight: 500;
+}
+
+.second-col {
+    margin-left: 1rem;
+}
+
+.second-col>p {
+    font-size: 25px;
+}
+
+.second-col>p span {
+    display: block;
+    font-size: 18px;
+    color: #040f0f;
+}
+
+.cancel-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cancel-button-wrapper button {
+    width: 150px;
+    font-size: 18px;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    margin-top: 0px;
+    margin-right: 2rem;
+}
+
+.shedule-cards {
+    margin-top: 1rem;
+}
+
+.shedule-cards h2 {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.shedule-cards .ScheduleCard {
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1600px) {
+    .ScheduleCard .first-col>p:nth-child(2) {
+        font-size: 15px;
+    }
+    .second-col>p {
+        font-size: 19px;
+    }
+    .second-col>p span {
+        font-size: 15px;
+    }
+    .shedule-cards h2 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .schedule-mockup .dialog-box {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .cancel-button-wrapper button {
+        margin-right: 0rem;
+    }
+}
+
+@media screen and (max-width: 655px) {
+    .ScheduleCard .first-col>p:nth-child(2) {
+        margin-right: 0rem;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    .third-col-d span {
+        font-size: 15px;
+        position: relative;
+        left: -5px;
+    }
+    .ScheduleCard .first-col {
+        align-items: flex-start;
+    }
+    .ScheduleCard .first-col .image {
+        width: 67px;
+        height: 71px;
+        border-radius: 10px;
+        margin-right: 0.5rem;
+    }
+    .Schedule-information {
+        padding: 2rem 1rem;
+    }
+    .ScheduleCard {
+        padding: 0.5rem 0.5rem;
+        position: relative;
+        align-items: flex-start;
+    }
+    .second-col {
+        margin-left: 0px;
+    }
+    .third-col-d {
+        padding-left: 8px;
+    }
+    .ScheduleCard .first-col>p:nth-child(2) {
+        font-size: 11px;
+        width: 100%;
+    }
+    .ScheduleCard .first-col>p:nth-child(2) span,
+    .ScheduleCard .first-col>p:nth-child(3) span {
+        font-size: 11px;
+    }
+    .ScheduleCard .first-col>p:nth-child(3) {
+        font-size: 13px;
+    }
+    .second-col>p {
+        font-size: 13px;
+    }
+    .second-col>p span {
+        font-size: 13px;
+    }
+    .cancel-button-wrapper {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+    .cancel-button-wrapper button {
+        width: 60px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .ScheduleCard .first-col>p:nth-child(2) {
+        margin-right: 0rem;
+    }
+    .ScheduleCard .first-col>p:nth-child(3) {
+        font-size: 11px;
+    }
+    .second-col>p {
+        font-size: 11px;
+    }
+    .second-col>p span {
+        font-size: 11px;
+    }
+}
+
+.navigation-buttons.schedule-tbs {
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.plans-information.text-t.sched-mn {
+    align-items: flex-start;
+    padding: 0;
+}
+
+@media (min-width:992px) {
+    .ScheduleCard .first-col p {
+        width: 40%;
+    }
+}
+
+.ScheduleCard.new-sc .first-col p span{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.ScheduleCard.new-sc .first-col {
+    display: flex;
+    justify-content: center;
+}
+.ScheduleCard.new-sc .second-col {
+    display: flex;
+    justify-content: center;
+}
+.ScheduleCard.new-sc .third-col-d span {
+    display: flex;
+    justify-content: center;
+}
+
+.ScheduleCard.new-sc .third-col-d span {
+    font-weight: 600;
+}
+
+.ScheduleCard.new-sc .second-col p p span {
+    font-weight: 600;
+}
+
+.ScheduleCard.new-sc .second-col p p {
+    text-align: center;
+    font-weight: 500;
+}

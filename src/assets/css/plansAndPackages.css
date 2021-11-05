@@ -1,0 +1,180 @@
+    .navigation-buttons,
+    .history-navigation-button {
+        display: flex;
+        align-items: center;
+    }
+    
+    .plans-information {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+    }
+    
+    .navigation-buttons button,
+    .history-navigation-button button {
+        border: none;
+        outline: none;
+        background-color: #e1dfdf;
+        color: #fff;
+        height: 43px;
+        width: 200px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    .navigation-buttons button.active,
+    .history-navigation-button button.active {
+        background-color: #ff5050;
+    }
+    
+    .PlansCard {
+        background-color: #eae8e8;
+        min-height: 30px;
+        border-radius: 20px;
+        padding: 2rem;
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    
+    .PlansCard>h1:first-child {
+        font-size: 45px;
+    }
+    
+    .PlansCard>.PlansCardClass {
+        font-size: 20px;
+    }
+    
+    .PlansCard>small {
+        font-size: 15px;
+    }
+    
+    .PlansCard>.price {
+        font-size: 55px;
+        margin-top: 1.2rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    .PlansCard>.price>span {
+        display: block;
+        font-size: 12px;
+    }
+    
+    .PlansCard>button,
+    .cancel-button-wrapper button {
+        width: 50%;
+        padding: 0.3rem 0rem;
+        border: none;
+        outline: none;
+        background-color: #ff5050;
+        border-radius: 999px;
+        color: #fff;
+        margin-top: 1rem;
+    }
+    
+    .packages,
+    .membership {
+        width: 100%;
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .membership {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    @media screen and (max-width: 1500px) {
+        .PlansCard>h1:first-child {
+            font-size: 24px;
+        }
+        .PlansCard>.PlansCardClass {
+            font-size: 18px;
+        }
+        .PlansCard>small {
+            font-size: 14px;
+        }
+        .PlansCard>.price {
+            font-size: 35px;
+        }
+    }
+    
+    @media screen and (max-width: 1200px) {
+        .membership {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media screen and (max-width: 600px) {
+        .membership {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+    
+    @media screen and (max-width: 500px) {
+        .navigation-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+        .navigation-buttons button {
+            width: 100%;
+        }
+        .profile-body-header .profile-label p {
+            font-size: 20px;
+        }
+    }
+    
+    @media screen and (max-width: 380px) {
+        .profile-body-header .profile-label p {
+            font-size: 15px;
+        }
+        .packages,
+        .membership {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .PlansCard {
+        background-color: #eae8e8;
+        min-height: 30px;
+        border-radius: 20px;
+        padding: 2rem;
+        min-width: 10%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+    }
+    
+    .laoder {
+        background: #00000005;
+        position: relative;
+        margin: 112px;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        display: none;
+    }
+    
+    .laoder img {
+        width: 52px;
+        top: 50%;
+        left: 28%;
+        position: absolute;
+        z-index: 999;
+    }
+    
+    .react-responsive-modal-root {
+        z-index: 999;
+    }
+
+    .laoder.plans {
+        position: fixed;
+        margin: 0;
+    }

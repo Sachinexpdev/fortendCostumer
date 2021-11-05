@@ -1,0 +1,48 @@
+.history-information {
+    display: block;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0;
+}
+
+.history-navigation-button {
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+}
+
+@media screen and (max-width: 1000px) {
+    .history-navigation-button {
+        flex-direction: column;
+        margin-left: 0px;
+    }
+    .history-navigation-button button {
+        width: 100%;
+    }
+    .history-navigation-button button:first-child {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .history-information>.ScheduleCard>.cancel-button-wrapper {
+        height: 10px !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .Schedule-information {
+        padding: 2rem 1rem;
+        padding-left: 0;
+    }
+    .history-information {
+        display: block;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+a.backtoexplore {
+    text-decoration: none;
+    color: white;
+    color: inherit;
+}

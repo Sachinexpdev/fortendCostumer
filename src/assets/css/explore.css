@@ -1,0 +1,688 @@
+.CourseExplore .Answers-button button,
+.ClassExplore .Answers-button button {
+    background-color: #aa9ffe;
+    color: #fff;
+    width: 107px;
+    height: 33px;
+}
+
+.mobile-view-seats {
+    display: none;
+}
+
+.explore-information {
+    display: block !important;
+    padding: 3rem 1rem;
+    display: grid !important;
+    justify-content: flex-start;
+    /* grid-template-columns: 50vw 300px; */
+    grid-template-columns: 53vw 270px;
+    grid-gap: 1rem;
+    flex: 0;
+}
+
+.header-explore-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-explore-left p {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+    border-bottom: 0.5rem solid rgba(149, 142, 142, 0.28);
+    padding: 0.3rem 0.8rem;
+    color: rgba(149, 142, 142, 0.28);
+}
+
+.header-explore-left p.active {
+    color: #ff4f4f;
+    border-color: #ff4f4f;
+}
+
+.class-explore-header,
+.course-explore-reel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0rem;
+    border-top: 1px solid rgba(149, 142, 142, 0.28);
+    border-bottom: 1px solid rgba(149, 142, 142, 0.28);
+}
+
+.coure-explore-left-arrow,
+.coure-explore-right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.coure-explore-left-arrow {
+    left: 0;
+}
+
+.coure-explore-right-arrow {
+    right: 0;
+}
+
+.course-explore-reel {
+    border: none;
+    transition: 0.3s ease all;
+    margin: 0rem 0rem;
+    justify-content: flex-start;
+}
+
+.course-explore-reel-container {
+    position: relative;
+    border-top: 1px solid rgba(149, 142, 142, 0.28);
+    border-bottom: 1px solid rgba(149, 142, 142, 0.28);
+    overflow: hidden;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.class-explore-header h1,
+.course-explore-reel h1 {
+    font-size: 16px;
+    text-align: center;
+    min-width: 88px;
+    height: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 22px;
+    cursor: pointer;
+    color: rgba(149, 142, 142, 0.28);
+}
+
+.class-explore-header h1>* {
+    pointer-events: none;
+}
+
+.class-explore-header h1 span {
+    display: block;
+    font-weight: 500;
+}
+
+.class-explore-header h1.active,
+.course-explore-reel h1.active {
+    background-color: #ff4f4f;
+    color: #fff;
+}
+
+.explore-class-card {
+    height: 147px;
+    position: relative;
+}
+
+.explore-class-card.ScheduleCard {
+    padding: 0.5rem 0.5rem;
+}
+
+.ScheduleCard.history {
+    position: relative;
+}
+
+.ExploreClassCards>*+* {
+    margin-top: 1rem;
+}
+
+.course-explore-cards {
+    margin-top: 1rem;
+}
+
+.course-explore-cards>*+* {
+    margin-top: 1rem;
+}
+
+.explore-class-card>.first-col {
+    height: 100%;
+    align-items: flex-start;
+}
+
+.explore-class-card>.first-col .image {
+    height: 100%;
+}
+
+.explore-class-card .second-col {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.explore-class-card .second-col p {
+    font-size: 20px;
+}
+
+.explore-class-card .second-col p span {
+    font-size: 16px;
+}
+
+.explore-class-card .second-col a {
+    color: #040f0f;
+    font-size: 16px;
+}
+
+.explore-class-card .third-col {
+    margin-left: 15px;
+}
+
+.explore-class-card .third-col>p {
+    margin-top: 5px;
+}
+
+.explore-class-card .third-col-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.explore-class-card .third-col-top h4 {
+    font-size: 16px;
+    font-weight: 500 !important;
+}
+
+.explore-class-card .third-col-top h4 span {
+    display: block;
+}
+
+.explore-class-card .fourth-col {
+    margin-left: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.explore-class-card .fourth-col span {
+    display: block;
+}
+
+
+/* explore-course-card */
+
+.explore-course-card>* {
+    flex: 1;
+}
+
+.explore-course-card {
+    padding: 0rem 0.5rem !important;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+}
+
+span.kwd {
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+}
+
+.explore-course-card>*:first-child,
+.explore-course-card>*:nth-child(3) {
+    grid-column: span 2;
+}
+
+.explore-course-card>* {
+    height: 85% !important;
+}
+
+.cancel-button-wrapper {
+    position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.cancel-button-wrapper div {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cancel-button-wrapper button {
+    margin-right: 0rem;
+}
+
+.cancel-button-wrapper .cancel-button {
+    color: #ff4f4f;
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.cancel-button-wrapper .booked-button {
+    color: #fff;
+    background-color: #7966ff;
+}
+
+.available-seats {
+    position: absolute;
+    bottom: 0;
+}
+
+.no-data-container {
+    text-align: center;
+    margin-top: 5rem;
+}
+
+.no-data-container p {
+    font-size: 25px;
+    width: 50%;
+    margin: auto;
+}
+
+.explore-right-section {
+    width: 100%;
+}
+
+.filter-toggle-btn {
+    display: none;
+}
+
+.Filter {
+    border: 1px solid #e1dfdf;
+    width: 100%;
+    margin-top: 10rem;
+    border-radius: 15px;
+}
+
+.explore-right-section .filter-top,
+.explore-right-section .icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.explore-right-section .icon-wrapper svg {
+    margin-left: 10px;
+}
+
+.explore-right-section .filter-top {
+    padding: 1rem;
+    border-bottom: 1px solid #e1dfdf;
+}
+
+.explore-right-section .filter-body {
+    padding: 1rem;
+}
+
+.explore-right-section .filter-top>h2 {
+    font-size: 16px;
+    color: #040f0f;
+}
+
+.filter-top .icon-wrapper p {
+    font-size: 16px;
+    color: #040f0f;
+}
+
+.checkbox-container>h3 {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-body .checboxes>*+* {
+    margin-top: 5px;
+}
+
+.filter-body .checkbox-wrapper label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filter-body .checkbox-wrapper label>* {
+    pointer-events: none;
+}
+
+.filter-body .checkbox-wrapper label.active>p {
+    color: #ff4f4f;
+}
+
+.filter-body .checkbox-wrapper label.active>svg path {
+    fill: #ff4f4f;
+}
+
+.apply-filter-btn {
+    background-color: #ff4f4f;
+    color: #fff;
+    margin-top: 1rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    height: 26px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1100px) {
+    .explore-information {
+        grid-template-columns: 60vw;
+    }
+    .explore-right-section {
+        order: 1;
+    }
+    .explore-left-section {
+        order: 2;
+    }
+    .filter-toggle-btn {
+        display: block;
+        font-size: 16px;
+        color: #ff4f4f;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+    .header-explore-left p {
+        font-size: 18px;
+        padding: 0.3rem 0.1rem;
+    }
+    .Filter {
+        margin-top: 1rem;
+        display: none;
+    }
+    .Filter.active-filter {
+        display: block;
+    }
+    .explore-course-card {
+        grid-template-columns: repeat(3, 1fr);
+        height: 210px;
+    }
+    .explore-course-card .cancel-button-wrapper {
+        position: absolute;
+        right: 20px;
+        bottom: 5px;
+        height: 40px !important;
+    }
+    .explore-course-card .cancel-button-wrapper button {
+        width: 54px;
+        font-size: 10px;
+        padding: 0.3rem 1rem;
+    }
+    span.kwd {
+        position: inherit;
+        top: -30px;
+        left: 46px;
+    }
+    .cancel-button-wrapper .cancel-button {
+        margin-top: 2px;
+    }
+    .explore-course-card .available-seats {
+        display: none;
+    }
+    .explore-course-card .first-col .image {
+        min-height: 71px;
+    }
+    .explore-course-card .third-col {
+        display: flex;
+        justify-content: space-between;
+    }
+    .explore-course-card .third-col>*,
+    .explore-course-card .third-col .third-col-top>* {
+        font-size: 10px;
+    }
+    .explore-course-card .fourth-col {
+        font-size: 10px;
+    }
+    .explore-course-card .cancel-button-wrapper div {
+        display: flex;
+        flex-direction: row;
+    }
+    .explore-course-card .cancel-button-wrapper .cancel-button {
+        margin-top: 0px;
+        margin-left: 4px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .class-explore-header h1,
+    .course-explore-reel h1 {
+        font-size: 10px;
+        min-width: 51px;
+        height: 35px;
+    }
+    .explore-information {
+        padding: 3rem 1rem;
+    }
+    .explore {
+        background-color: #fff;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .explore-information {
+        margin: 2rem auto;
+        grid-template-columns: 92vw;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .cancel-button-wrapper {
+        position: absolute;
+        bottom: 2px;
+        height: 60px;
+        right: 0px;
+    }
+    .ScheduleCard.history .cancel-button-wrapper {
+        height: 20px;
+        bottom: 5px;
+    }
+    .class-explore-header {
+        overflow: auto;
+    }
+    .available-seats {
+        display: none;
+    }
+    .mobile-view-seats {
+        display: block;
+        bottom: 0%;
+        left: 60px;
+        position: absolute;
+        font-size: 10px;
+    }
+    .class-explore-header {
+        padding: 0.5rem 0.5rem;
+    }
+    .available-seats {
+        display: none !important;
+    }
+    .explore-class-card {
+        height: 90px;
+        padding: 0.5rem !important;
+    }
+    .explore-course-card {
+        height: 210px !important;
+    }
+    .cancel-button-wrapper>div>button {
+        width: 54px;
+        font-size: 10px;
+    }
+    .cancel-button-wrapper .cancel-button {
+        margin-top: 2px;
+    }
+    .explore-class-card .first-col .image {
+        width: 67px;
+        height: 71px;
+    }
+    .explore-class-card .first-col {
+        position: relative;
+    }
+    .explore-class-card .second-col p,
+    .explore-class-card .second-col p>span,
+    .explore-class-card .second-col a {
+        font-size: 10px;
+    }
+    .explore-class-card .second-col {
+        justify-content: flex-start;
+    }
+    .explore-class-card .second-col a {
+        margin-top: 10px;
+    }
+    .cancel-button {
+        margin-top: 2px;
+    }
+}
+
+.image.cr-img-d.exp-add {
+    height: 95% !important;
+}
+
+
+/* *****Green */
+
+.green {
+    background: seagreen !important;
+}
+
+.greent {
+    color: seagreen !important;
+}
+
+.greentab {
+    color: seagreen !important;
+    border-color: seagreen !important;
+}
+
+
+/**** Blue */
+
+.blue {
+    background: blue !important;
+}
+
+.bluet {
+    color: blue !important;
+}
+
+.bluetab {
+    color: blue !important;
+    border-color: blue !important;
+}
+
+.indigo {
+    background: #283593 !important;
+}
+
+.indigot {
+    color: #283593!important;
+}
+
+.indigotab {
+    border-color: #283593!important;
+}
+
+.red {
+    background: red !important;
+}
+
+.redt {
+    color: red !important;
+}
+
+.redtab {
+    border-color: red !important;
+}
+
+
+/* ***Pink */
+
+.pink {
+    background: pink !important;
+}
+
+.pinkt {
+    color: pink !important;
+}
+
+.pinktab {
+    border-color: pink !important;
+}
+
+.orange {
+    background: orangered !important;
+}
+
+.oranget {
+    color: orangered !important;
+}
+
+.orangetab {
+    border-color: orangered !important;
+}
+
+.brown {
+    background: brown !important;
+}
+
+.brownt {
+    color: brown !important;
+}
+
+.browntab {
+    border-color: brown !important;
+}
+
+.lightgreen {
+    background: #32cb00 !important;
+}
+
+.lightgreent {
+    color: #32cb00 !important;
+}
+
+.lightgreentab {
+    border-color: #32cb00 !important;
+}
+
+.purple {
+    background: purple !important;
+}
+
+.purplet {
+    color: purple !important;
+}
+
+.purpletab {
+    border-color: purple !important;
+}
+
+.yellow {
+    background: yellow !important;
+}
+
+.yellowt {
+    color: yellow !important;
+}
+
+.yellowtab {
+    border-color: yellow !important;
+}
+
+.profile-body-header .pro-btn-m {
+    margin-left: -17px;
+    width: 23%;
+    padding-right: 0;
+    margin-right: 0;
+    z-index: 888;
+}
+
+.profile-body-header .pro-btn-m a {
+    padding-right: 24px;
+}
+
+@media (min-width:768px) {
+    .cancel-button-wrapper button {
+        width: 100%;
+        font-size: 18px;
+        padding: 0.3rem 1.5rem;
+        cursor: pointer;
+        margin-top: 0px;
+        margin-right: 2rem;
+    }
+}

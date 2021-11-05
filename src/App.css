@@ -1,0 +1,19 @@
+@font-face {
+    src: url("./assets/font/FuturaPTCondMedium.otf");
+    font-family: FuturaReg;
+}
+
+@font-face {
+    src: url("./assets/font/FuturaPTLight.otf");
+    font-family: FuturaLight;
+}
+
+body {
+    background-color: #f1f1f1;
+    font-family: futura-pt;
+    font-style: normal;
+}
+
+.App {
+    min-height: 100vh;
+}
