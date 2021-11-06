@@ -54,6 +54,7 @@ function Login() {
         email: email,
         password: password,
       })
+      console.log("response", res)
       if (res.status === 200) {
         // debugger
         toastr.success('Log in Success!');
@@ -77,9 +78,9 @@ function Login() {
       // alert('Login unsuccessfull.');
 
       toastr.error('Log in Unsuccessful!');
-      setTimeout(function () {
-        window.location.reload();
-      }, 3000);
+      // setTimeout(function () {
+      //   window.location.reload();
+      // }, 3000);
     }
   }
 
