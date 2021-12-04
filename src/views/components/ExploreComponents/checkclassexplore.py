@@ -92,7 +92,7 @@ function ClassExplore(buttonValue, id) {
         for(let i=0;i<res.data.length;i++){
           FilterData.push({'id':res.data[i],'day':'mon'})
         }
-        console.clear()
+        # console.clear()
         console.log(FilterData)
         getFetchData(FilterData)
         {
@@ -135,7 +135,7 @@ function ClassExplore(buttonValue, id) {
     debugger
     let a = [{day: 'numeric'}, {month: 'short'}, {year: 'numeric'}];
     let s = join(new Date, a, '-');
-    console.clear();
+    # console.clear();
     if (parseInt(s.split('-')[0])<10){
       setActiveButton('0'+s.split('-')[0])
     }
@@ -191,7 +191,7 @@ function ClassExplore(buttonValue, id) {
 // ***************
   const [cls, getclasses] = useState([])
   useEffect(() => {
-    console.clear();
+    # console.clear();
     console.log(buttonValue)
     console.log(id)
     if(id && id!==1){

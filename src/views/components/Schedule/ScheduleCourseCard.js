@@ -45,7 +45,7 @@ const [blog3, setblog3] = useState([])
 
 // ***********Cancle Course**********
 function CancelCourse(course_id){
-  debugger
+  // debugger
   var config={
     method:'post',
     url:BASE_URL + 'user/home/cancel_course/',
@@ -60,7 +60,7 @@ axios(config)
   .then(getuuid => {
 
     alert('Course Canceled');
-    window.location.reload();
+    // window.location.reload();
     // setblog3(getuuid.data);
   })
 

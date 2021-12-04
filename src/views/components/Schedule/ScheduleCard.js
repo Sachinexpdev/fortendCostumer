@@ -31,7 +31,7 @@ axios(config)
   .then(getuuid => {
 
     alert('Class Canceled');
-    window.location.reload();
+    // window.location.reload();
     // setblog3(getuuid.data);
   })
 

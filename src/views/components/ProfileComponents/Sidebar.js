@@ -4,60 +4,56 @@ import ProfilePic1 from "../../../assets/img/grl.jpeg";
 
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import Cookies from 'universal-cookie';
-import axios from 'axios';
+import Cookies from "universal-cookie";
+import axios from "axios";
 import BASE_URL from "../../pages/base";
 
 const cookies = new Cookies();
 
-var gender = cookies.get('gender')
+var gender = cookies.get("gender");
 // alert(gender)
-var act_class="activeSidebarLink "+cookies.get('theme');
+var act_class = "activeSidebarLink " + cookies.get("theme");
 function Sidebar({ activeLink }) {
-
-  function logout(){
+  function logout() {
     // debugger
-    cookies.remove('uuid')
-    cookies.remove('email')
-    cookies.remove('user_fullname')
-    window.location = "auth/sign-in/"
-}
+    cookies.remove("uuid");
+    cookies.remove("email");
+    cookies.remove("user_fullname");
+    window.location = "auth/sign-in/";
+  }
 
-const [getgym,setgym] = useState([])
+  const [getgym, setgym] = useState([]);
 
-useEffect(() => {
-  
-  axios
-  .get(BASE_URL + 'gymprofile/gym/'+cookies.get('gym_id'))
-  .then(res => {
-    // console.log(res)
-    // console.log(cookies.get('email'));
-    setgym(res.data);
-    // data2 = setgym(res.data);
-    console.clear()
-    debugger
-    console.log(res.data)
-    
-  })
-  // alert(getgym.gym_image)
-  
-  .catch(err => {
-    // console.log(err)
-  })
-  
-}, [])
+  useEffect(() => {
+    axios
+      .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
+      .then((res) => {
+        // console.log(res)
+        // console.log(cookies.get('email'));
+        setgym(res.data);
+        // data2 = setgym(res.data);
+        // console.clear()
+        // debugger;
+        console.log(res.data);
+      })
+      // alert(getgym.gym_image)
 
+      .catch((err) => {
+        // console.log(err)
+      });
+  }, []);
 
   return (
     <>
       <aside className="profile-mbl-sidebar">
         <div className="profile-mbl-sidebar-header">
-         <svg
+          <svg
             className="profile-sidebar-close"
             xmlns="http://www.w3.org/2000/svg"
             width="19.005"
             height="19"
-            viewBox="0 0 19.005 19">
+            viewBox="0 0 19.005 19"
+          >
             <path
               id="Icon_ionic-ios-close"
               data-name="Icon ionic-ios-close"
@@ -65,22 +61,24 @@ useEffect(() => {
               transform="translate(-11.285 -11.289)"
               fill="#7567fe"
             />
-   
           </svg>
-          
+
           <div className="profile-mbl-sidebar-header-right">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22.205"
               height="22.249"
-              viewBox="0 0 22.205 22.249">
+              viewBox="0 0 22.205 22.249"
+            >
               <g
                 id="fcb585d9a7c6fd63dc7aead816a01339"
-                transform="translate(-10.003 -9.034)">
+                transform="translate(-10.003 -9.034)"
+              >
                 <g
                   id="Group_347"
                   data-name="Group 347"
-                  transform="translate(10.003 9.034)">
+                  transform="translate(10.003 9.034)"
+                >
                   <path
                     id="Path_13"
                     data-name="Path 13"
@@ -96,11 +94,13 @@ useEffect(() => {
               xmlns="http://www.w3.org/2000/svg"
               width="19.278"
               height="21.5"
-              viewBox="0 0 19.278 21.5">
+              viewBox="0 0 19.278 21.5"
+            >
               <g
                 id="Bell_Icon"
                 data-name="Bell Icon"
-                transform="translate(-1869.812 -36.961)">
+                transform="translate(-1869.812 -36.961)"
+              >
                 <path
                   id="Icon_awesome-bell"
                   data-name="Icon awesome-bell"
@@ -116,7 +116,8 @@ useEffect(() => {
                   transform="translate(1882.432 39.933)"
                   fill="rgba(255,0,0,0.69)"
                   stroke="#f8f8f8"
-                  stroke-width="1">
+                  stroke-width="1"
+                >
                   <circle cx="2.222" cy="2.222" r="2.222" stroke="none" />
                   <circle cx="2.222" cy="2.222" r="1.722" fill="none" />
                 </g>
@@ -128,19 +129,24 @@ useEffect(() => {
           <div className="profile-presentation">
             <img src={ProfilePic} />
             <div className="profile-name">
-              <span>{cookies.get('user_fullname')}</span>
-              <span>{cookies.get('email')}</span>
+              <span>{cookies.get("user_fullname")}</span>
+              <span>{cookies.get("email")}</span>
             </div>
           </div>
           <ul className="profile-sidebar-options">
             <Link to="/dashboard">
               <li
-                className={`${activeLink == "dashboard" && "activeSidebarLink "+cookies.get("theme")}`}>
+                className={`${
+                  activeLink == "dashboard" &&
+                  "activeSidebarLink " + cookies.get("theme")
+                }`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="26.2"
                   height="26.2"
-                  viewBox="0 0 26.2 26.2">
+                  viewBox="0 0 26.2 26.2"
+                >
                   <path
                     id="Path_2"
                     data-name="Path 2"
@@ -153,13 +159,13 @@ useEffect(() => {
               </li>
             </Link>
             <Link to="/explore">
-              <li
-                className={`${activeLink == "explore" && act_class}`}>
+              <li className={`${activeLink == "explore" && act_class}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
                   height="30"
-                  viewBox="0 0 30 30">
+                  viewBox="0 0 30 30"
+                >
                   <path
                     id="Icon_material-explore"
                     data-name="Icon material-explore"
@@ -174,22 +180,24 @@ useEffect(() => {
             </Link>
             <Link to="/Schedule">
               <li
-                className={`${
-                  activeLink == "schedule" && "activeSidebarLink"
-                }`}>
+                className={`${activeLink == "schedule" && "activeSidebarLink"}`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="23.678"
                   height="22.757"
-                  viewBox="0 0 23.678 22.757">
+                  viewBox="0 0 23.678 22.757"
+                >
                   <g
                     id="Group_251"
                     data-name="Group 251"
-                    transform="translate(-41 -437)">
+                    transform="translate(-41 -437)"
+                  >
                     <g
                       id="Layer_2"
                       data-name="Layer 2"
-                      transform="translate(41 437)">
+                      transform="translate(41 437)"
+                    >
                       <g id="Icons" transform="translate(0)">
                         <path
                           id="Path_2"
@@ -238,12 +246,14 @@ useEffect(() => {
               <li
                 className={`${
                   activeLink == "PlanAndPackages" && "activeSidebarLink"
-                }`}>
+                }`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20.339"
                   height="20.339"
-                  viewBox="0 0 20.339 20.339">
+                  viewBox="0 0 20.339 20.339"
+                >
                   <path
                     id="Path_14"
                     data-name="Path 14"
@@ -259,12 +269,14 @@ useEffect(() => {
             </Link>
             <Link to="/history">
               <li
-                className={`${activeLink == "history" && "activeSidebarLink"}`}>
+                className={`${activeLink == "history" && "activeSidebarLink"}`}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="23.047"
                   height="21.626"
-                  viewBox="0 0 23.047 21.626">
+                  viewBox="0 0 23.047 21.626"
+                >
                   <path
                     id="Path_8"
                     data-name="Path 8"
@@ -282,7 +294,8 @@ useEffect(() => {
                 xmlns="http://www.w3.org/2000/svg"
                 width="26"
                 height="26"
-                viewBox="0 0 26 26">
+                viewBox="0 0 26 26"
+              >
                 <path
                   id="Path_16"
                   data-name="Path 16"
@@ -310,24 +323,28 @@ useEffect(() => {
               <span>Settings</span>
             </li>
             <li>
-            <NavLink className="side-logout-a" to="/auth/sign-in" onClick={logout}>
-        
-              <svg
-                id="Icons"
-                xmlns="http://www.w3.org/2000/svg"
-                width="21.291"
-                height="22.802"
-                viewBox="0 0 21.291 22.802">
-                <path
-                  id="Path_5"
-                  data-name="Path 5"
-                  d="M12.165,10.645V0H9.124V10.645ZM0,12.165A10.645,10.645,0,1,0,15.207,2.539V6.083a7.6,7.6,0,1,1-9.124,0V2.539A10.645,10.645,0,0,0,0,12.165Z"
-                  transform="translate(0)"
-                  fill="#040f0f"
-                  fill-rule="evenodd"
-                />
-              </svg>
-              <span>Log Out</span>
+              <NavLink
+                className="side-logout-a"
+                to="/auth/sign-in"
+                onClick={logout}
+              >
+                <svg
+                  id="Icons"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="21.291"
+                  height="22.802"
+                  viewBox="0 0 21.291 22.802"
+                >
+                  <path
+                    id="Path_5"
+                    data-name="Path 5"
+                    d="M12.165,10.645V0H9.124V10.645ZM0,12.165A10.645,10.645,0,1,0,15.207,2.539V6.083a7.6,7.6,0,1,1-9.124,0V2.539A10.645,10.645,0,0,0,0,12.165Z"
+                    transform="translate(0)"
+                    fill="#040f0f"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span>Log Out</span>
               </NavLink>
             </li>
           </ul>
@@ -336,23 +353,25 @@ useEffect(() => {
         {/* <span className="powered-by">Powered by floey</span> */}
       </aside>
       <div className="profile-sidebar">
-      
-        <div className="profile-pic" >
-         {/* {gender==="Male" ? <img src={ProfilePic}></img>: <img src={ProfilePic1}></img>} */}
-         <img src={BASE_URL.slice(0,-1)+ getgym.gym_image}></img>
+        <div className="profile-pic">
+          {/* {gender==="Male" ? <img src={ProfilePic}></img>: <img src={ProfilePic1}></img>} */}
+          <img src={BASE_URL.slice(0, -1) + getgym.gym_image}></img>
         </div>
 
         <ul className="profile-sidebar-options">
           <Link to="/dashboard">
             <li
               className={`dashboard-desktop-option ${
-                activeLink == "dashboard" && "activeSidebarLink "+cookies.get("theme")
-              }`}>
+                activeLink == "dashboard" &&
+                "activeSidebarLink " + cookies.get("theme")
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="26.2"
                 height="26.2"
-                viewBox="0 0 26.2 26.2">
+                viewBox="0 0 26.2 26.2"
+              >
                 <path
                   id="Path_2"
                   data-name="Path 2"
@@ -366,12 +385,18 @@ useEffect(() => {
           </Link>
 
           <Link to="/explore">
-            <li className={`${activeLink == "explore" && "activeSidebarLink "+cookies.get("theme")}`}>
+            <li
+              className={`${
+                activeLink == "explore" &&
+                "activeSidebarLink " + cookies.get("theme")
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
-                viewBox="0 0 30 30">
+                viewBox="0 0 30 30"
+              >
                 <path
                   id="Icon_material-explore"
                   data-name="Icon material-explore"
@@ -387,20 +412,27 @@ useEffect(() => {
 
           <Link to="/Schedule">
             <li
-              className={`${activeLink == "schedule" && "activeSidebarLink "+cookies.get("theme")}`}>
+              className={`${
+                activeLink == "schedule" &&
+                "activeSidebarLink " + cookies.get("theme")
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="23.678"
                 height="22.757"
-                viewBox="0 0 23.678 22.757">
+                viewBox="0 0 23.678 22.757"
+              >
                 <g
                   id="Group_251"
                   data-name="Group 251"
-                  transform="translate(-41 -437)">
+                  transform="translate(-41 -437)"
+                >
                   <g
                     id="Layer_2"
                     data-name="Layer 2"
-                    transform="translate(41 437)">
+                    transform="translate(41 437)"
+                  >
                     <g id="Icons" transform="translate(0)">
                       <path
                         id="Path_2"
@@ -449,13 +481,16 @@ useEffect(() => {
           <Link to="/PlanAndPackages">
             <li
               className={`${
-                activeLink == "PlanAndPackages" && "activeSidebarLink "+cookies.get("theme")
-              }`}>
+                activeLink == "PlanAndPackages" &&
+                "activeSidebarLink " + cookies.get("theme")
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20.339"
                 height="20.339"
-                viewBox="0 0 20.339 20.339">
+                viewBox="0 0 20.339 20.339"
+              >
                 <path
                   id="Path_14"
                   data-name="Path 14"
@@ -470,12 +505,18 @@ useEffect(() => {
             </li>
           </Link>
           <Link to="/history">
-            <li className={`${activeLink == "history" && "activeSidebarLink "+cookies.get("theme")}`}>
+            <li
+              className={`${
+                activeLink == "history" &&
+                "activeSidebarLink " + cookies.get("theme")
+              }`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="23.047"
                 height="21.626"
-                viewBox="0 0 23.047 21.626">
+                viewBox="0 0 23.047 21.626"
+              >
                 <path
                   id="Path_8"
                   data-name="Path 8"
@@ -488,27 +529,30 @@ useEffect(() => {
               <span>History</span>
             </li>
           </Link>
-          <li> 
+          <li>
+            <NavLink
+              className="side-logout-a"
+              to="/auth/sign-in"
+              onClick={logout}
+            >
+              <svg
+                id="Icons"
+                xmlns="http://www.w3.org/2000/svg"
+                width="21.291"
+                height="22.802"
+                viewBox="0 0 21.291 22.802"
+              >
+                <path
+                  id="Path_5"
+                  data-name="Path 5"
+                  d="M12.165,10.645V0H9.124V10.645ZM0,12.165A10.645,10.645,0,1,0,15.207,2.539V6.083a7.6,7.6,0,1,1-9.124,0V2.539A10.645,10.645,0,0,0,0,12.165Z"
+                  transform="translate(0)"
+                  fill="#040f0f"
+                  fill-rule="evenodd"
+                />
+              </svg>
 
-          <NavLink className="side-logout-a" to="/auth/sign-in" onClick={logout}>
-            <svg
-              id="Icons"
-              xmlns="http://www.w3.org/2000/svg"
-              width="21.291"
-              height="22.802"
-              viewBox="0 0 21.291 22.802">
-              <path
-                id="Path_5"
-                data-name="Path 5"
-                d="M12.165,10.645V0H9.124V10.645ZM0,12.165A10.645,10.645,0,1,0,15.207,2.539V6.083a7.6,7.6,0,1,1-9.124,0V2.539A10.645,10.645,0,0,0,0,12.165Z"
-                transform="translate(0)"
-                fill="#040f0f"
-                fill-rule="evenodd"
-              />
-            </svg>
-
-            <span>Log Out</span>
-
+              <span>Log Out</span>
             </NavLink>
           </li>
         </ul>

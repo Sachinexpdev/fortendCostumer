@@ -21,7 +21,7 @@ firebase.initializeApp({
 function SocialSignin(data){
   var url = BASE_URL+'user/social_login/';
   axios.post(url,data).then(re=>{
-      console.clear()
+      // console.clear()
       alert(re.data.message)
       // console.log(re.data)
       // cookies.set('logintoken', re.data.data.access, { path: '/' }) 
@@ -36,7 +36,7 @@ const googleProvider = new firebase.auth.GoogleAuthProvider()
 export const signInWithGoogle = () => {
   
   auth.signInWithPopup(googleProvider).then((res) => {
-      console.clear()
+      // console.clear()
     var data = {
         social_id:res.user.uid,
         displayName:res.user.displayName,

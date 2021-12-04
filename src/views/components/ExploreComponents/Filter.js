@@ -1,186 +1,173 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { HandleFilterCheckbox } from "../../../assets/js/Events/HandleFilterCheckbox";
 import BASE_URL from "../../pages/base";
-import axios from 'axios';
+import axios from "axios";
 import Cookies from "universal-cookie";
-import $ from 'jquery';
+import $ from "jquery";
 const cookies = new Cookies();
 
 function Filter() {
-
   const history = useHistory();
   // const [filter, setFilter] = useState([]);
-  
-function GetUrlParamas(){
-  var params = window.location.href; //history.location.search;
-  // alert(params)
-  var url = new URL(params);
-  var level= url.searchParams.get('level');
-  var age= url.searchParams.get('age');
-  var gender= url.searchParams.get('class_gender');
-  // console.log('123');
-  // alert(gender)
-  
-  // if (level){
-    
-  // var level_array = level.split(',');}
-  // if (age){
-  // level_array.concat(age.split(','))}
-  // if (gender){
-  //   if(gender.includes(',')){
-  //     level_array.concat(gender.split(','))
-  //   }
-  // }
-  
-  // alert(level_array);
 
-  if(level && level.includes('All')) {
+  function GetUrlParamas() {
+    var params = window.location.href; //history.location.search;
+    // alert(params)
+    var url = new URL(params);
+    var level = url.searchParams.get("level");
+    var age = url.searchParams.get("age");
+    var gender = url.searchParams.get("class_gender");
+    // console.log('123');
+    // alert(gender)
+
+    // if (level){
+
+    // var level_array = level.split(',');}
+    // if (age){
+    // level_array.concat(age.split(','))}
+    // if (gender){
+    //   if(gender.includes(',')){
+    //     level_array.concat(gender.split(','))
+    //   }
+    // }
+
+    // alert(level_array);
+
+    if (level && level.includes("All")) {
       $("#all-level-checkbox-label").click();
-  }
-  if(level && level.includes("Intermediate")) {
-       $("#Intermediate-checkbox-label").click();
-   }
-  if(level && level.includes("Advanced")) {
-    $("#Advanced-checkbox-label").click();
-  }
-
-  if(gender && gender.includes("Female")) {
-    $("#Female-checkbox-label").click();
-  }
-
-  if(gender && gender.includes("Male")) {
-    $("#Male-checkbox-label").click();
-  }
-
-  if( gender && gender.includes("Unisex")) {
-    $("#Mixed-checkbox-label").click();
-  }
-  
-  if( age && age.includes("Kids")) {
-    $("#Kids-checkbox-label").click();
-  }
-
-  if( age && age.includes("Teens") ) {
-    $("#Teens-checkbox-label").click();
-  }
-
-  if( age && age.includes("Adults")) {
-    $("#Adults-checkbox-label").click();
-  }
-
-}
-window.onload = function(){
-  GetUrlParamas()
-}
-  function GetValues(){
-
-     var newurl = window.location.protocol + "//" + window.location.host + 'explore/';
-    
-var levels = ''
-var age=''
-var gender=''
-    if($('#all-level-checkbox').is(':checked')){
-      levels=levels+'All'
     }
-    if($('#Intermediate-level-checkbox').is(':checked')){
-      if(levels===''){
-        levels=levels+'Intermediate'
-      }else{
-        levels=levels+',Intermediate'
+    if (level && level.includes("Intermediate")) {
+      $("#Intermediate-checkbox-label").click();
+    }
+    if (level && level.includes("Advanced")) {
+      $("#Advanced-checkbox-label").click();
+    }
+
+    if (gender && gender.includes("Female")) {
+      $("#Female-checkbox-label").click();
+    }
+
+    if (gender && gender.includes("Male")) {
+      $("#Male-checkbox-label").click();
+    }
+
+    if (gender && gender.includes("Unisex")) {
+      $("#Mixed-checkbox-label").click();
+    }
+
+    if (age && age.includes("Kids")) {
+      $("#Kids-checkbox-label").click();
+    }
+
+    if (age && age.includes("Teens")) {
+      $("#Teens-checkbox-label").click();
+    }
+
+    if (age && age.includes("Adults")) {
+      $("#Adults-checkbox-label").click();
+    }
+  }
+  window.onload = function () {
+    GetUrlParamas();
+  };
+  function GetValues() {
+    var newurl =
+      window.location.protocol + "//" + window.location.host + "explore/";
+
+    var levels = "";
+    var age = "";
+    var gender = "";
+    if ($("#all-level-checkbox").is(":checked")) {
+      levels = levels + "All";
+    }
+    if ($("#Intermediate-level-checkbox").is(":checked")) {
+      if (levels === "") {
+        levels = levels + "Intermediate";
+      } else {
+        levels = levels + ",Intermediate";
       }
-      
     }
-    if($('#Advanced-level-checkbox').is(':checked')){
-      if(levels===''){
-        levels=levels+'Advanced'
-      }else{
-        levels=levels+',Advanced'
+    if ($("#Advanced-level-checkbox").is(":checked")) {
+      if (levels === "") {
+        levels = levels + "Advanced";
+      } else {
+        levels = levels + ",Advanced";
       }
-      
     }
 
-    if($('#Female-checkbox').is(':checked')){
-      if(gender===''){
-        gender=gender+'Female'
-      }else{
-        gender=gender+',Female'
+    if ($("#Female-checkbox").is(":checked")) {
+      if (gender === "") {
+        gender = gender + "Female";
+      } else {
+        gender = gender + ",Female";
       }
-      
     }
 
-    if($('#Male-checkbox').is(':checked')){
-      if(gender===''){
-        gender=gender+'Male'
-      }else{
-        gender=gender+',Male'
+    if ($("#Male-checkbox").is(":checked")) {
+      if (gender === "") {
+        gender = gender + "Male";
+      } else {
+        gender = gender + ",Male";
       }
-      
     }
 
-    if($('#Mixed-checkbox').is(':checked')){
-      if(gender===''){
-        gender=gender+'Unisex'
-      }else{
-        gender=gender+',Unisex'
+    if ($("#Mixed-checkbox").is(":checked")) {
+      if (gender === "") {
+        gender = gender + "Unisex";
+      } else {
+        gender = gender + ",Unisex";
       }
-      
     }
 
-    if($('#Kids-checkbox').is(':checked')){
-      if(age===''){
-        age=age+'Kids'
-      }else{
-        age=age+',Kids'
+    if ($("#Kids-checkbox").is(":checked")) {
+      if (age === "") {
+        age = age + "Kids";
+      } else {
+        age = age + ",Kids";
       }
-      
     }
 
-    if($('#Teens-checkbox').is(':checked')){
-      if(age===''){
-        age=age+'Teens'
-      }else{
-        age=age+',Teens'
+    if ($("#Teens-checkbox").is(":checked")) {
+      if (age === "") {
+        age = age + "Teens";
+      } else {
+        age = age + ",Teens";
       }
-      
     }
 
-    if($('#Adults-checkbox').is(':checked')){
-      if(age===''){
-        age=age+'Adults'
-      }else{
-        age=age+',Adults'
+    if ($("#Adults-checkbox").is(":checked")) {
+      if (age === "") {
+        age = age + "Adults";
+      } else {
+        age = age + ",Adults";
       }
-      
     }
 
-
-history.push({path:newurl},'',newurl);
-      history.push({
-        pathname:  "/explore",
-        search: `?level=`+levels+'&age='+age+'&class_gender='+gender
-        
-     });
-window.location.reload();   
-  
+    history.push({ path: newurl }, "", newurl);
+    history.push({
+      pathname: "/explore",
+      search: `?level=` + levels + "&age=" + age + "&class_gender=" + gender,
+    });
+    window.location.reload();
   }
- 
+
   useEffect(() => {
     HandleFilterCheckbox();
   }, []);
-  
+
   return (
     <>
       <button
         className="filter-toggle-btn"
         onClick={(e) => {
           document.querySelector(".Filter").classList.toggle("active-filter");
-        }}>
+        }}
+      >
         Filter
       </button>
       <div className="Filter">
         <div className="filter-top">
-       
           <h2>Filter</h2>
           <div className="icon-wrapper">
             {/* <p><a onclick={()=>window.location.reload()}>Clear all</a></p> */}
@@ -209,7 +196,8 @@ window.location.reload();
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -224,19 +212,20 @@ window.location.reload();
                 <input type="checkbox" id="all-level-checkbox" />
               </li>
 
-              
               <li className="checkbox-wrapper">
                 <label
                   for="Intermediate-level-checkbox"
                   // onClick={()=>Setfunction('Intermediate')}
-                  id="Intermediate-checkbox-label">
+                  id="Intermediate-checkbox-label"
+                >
                   <p>Intermediate</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -254,14 +243,16 @@ window.location.reload();
                 <label
                   for="Advanced-level-checkbox"
                   // onClick={()=>Setfunction('Advance')}
-                  id="Advanced-checkbox-label">
+                  id="Advanced-checkbox-label"
+                >
                   <p>Advanced</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -282,16 +273,15 @@ window.location.reload();
             <h3>Gender</h3>
             <ul className="checboxes">
               <li className="checkbox-wrapper">
-                <label for="Female-checkbox" 
-                
-                id="Female-checkbox-label">
+                <label for="Female-checkbox" id="Female-checkbox-label">
                   <p>Female</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -314,7 +304,8 @@ window.location.reload();
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -337,7 +328,8 @@ window.location.reload();
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -354,20 +346,19 @@ window.location.reload();
             </ul>
           </div>
 
-          
           <div className="checkbox-container">
             <h3>Ages</h3>
             <ul className="checboxes">
               <li className="checkbox-wrapper">
-                <label for="Kids-checkbox" 
-                id="Kids-checkbox-label">
+                <label for="Kids-checkbox" id="Kids-checkbox-label">
                   <p>Kids (2-12)</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -382,15 +373,15 @@ window.location.reload();
               </li>
 
               <li className="checkbox-wrapper">
-                <label for="Teens-checkbox" 
-                id="Teens-checkbox-label">
+                <label for="Teens-checkbox" id="Teens-checkbox-label">
                   <p>Teens (13-17)</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -406,15 +397,15 @@ window.location.reload();
               </li>
 
               <li className="checkbox-wrapper">
-                <label for="Adults-checkbox" 
-                id="Adults-checkbox-label">
+                <label for="Adults-checkbox" id="Adults-checkbox-label">
                   <p>Adults (18+)</p>
 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12.535"
                     height="12.535"
-                    viewBox="0 0 12.535 12.535">
+                    viewBox="0 0 12.535 12.535"
+                  >
                     <path
                       id="Icon_awesome-check-circle"
                       data-name="Icon awesome-check-circle"
@@ -431,7 +422,12 @@ window.location.reload();
             </ul>
           </div>
 
-          <button className={"apply-filter-btn "+cookies.get("theme")} onClick={()=>GetValues()}>Apply Filters</button>
+          <button
+            className={"apply-filter-btn " + cookies.get("theme")}
+            onClick={() => GetValues()}
+          >
+            Apply Filters
+          </button>
         </div>
       </div>
     </>

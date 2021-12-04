@@ -48,7 +48,7 @@ function Update_Profile(){
   var profile_pic = pictures[0];
   if(first_name=='' || last_name=='' || email=='' || mobile=='') 
   {return toastr.info('Enter all required values')}
-  debugger
+  // debugger
   console.log(pictures[0])
   var data = new FormData();
       data.append('first_name', first_name);
