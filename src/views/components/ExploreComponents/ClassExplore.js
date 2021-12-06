@@ -236,37 +236,43 @@ function ClassExplore(buttonValue, ButtonOnClick, seats, id, level) {
           className="coure-explore-right-arrow"
           onClick={HandleForwardMoveSlider}
         />
-        {/* <h1
+        <h1
           className={`${ActiveButton == 2 && "active"}`}
           id="10-Jul-2021"
-          onClick={(e) => setActiveButton(2)}>
+          onClick={(e) => setActiveButton(2)}
+        >
           TUES<span>2</span>
         </h1>
         <h1
           className={`${ActiveButton == 3 && "active"}`}
-          onClick={(e) => setActiveButton(3)}>
+          onClick={(e) => setActiveButton(3)}
+        >
           WED<span>3</span>
         </h1>
         <h1
           className={`${ActiveButton == 4 && "active"}`}
-          onClick={(e) => setActiveButton(4)}>
+          onClick={(e) => setActiveButton(4)}
+        >
           THU<span>4</span>
         </h1>
         <h1
           className={`${ActiveButton == 5 && "active"}`}
-          onClick={(e) => setActiveButton(5)}>
+          onClick={(e) => setActiveButton(5)}
+        >
           FRI<span>5</span>
         </h1>
         <h1
           className={`${ActiveButton == 6 && "active"}`}
-          onClick={(e) => setActiveButton(6)}>
+          onClick={(e) => setActiveButton(6)}
+        >
           SAT<span>6</span>
         </h1>
-        <h1 
+        <h1
           className={`${ActiveButton == 7 && "active"}`}
-          onClick={(e) => setActiveButton(7)}>
+          onClick={(e) => setActiveButton(7)}
+        >
           SUN<span>7</span>
-        </h1> */}
+        </h1>
       </div>
 
       <div class="laoder">
