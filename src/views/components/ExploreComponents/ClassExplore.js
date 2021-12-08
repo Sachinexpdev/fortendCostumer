@@ -123,12 +123,14 @@ function ClassExplore(buttonValue, ButtonOnClick, seats, id, level) {
       });
   };
   const ShowMockupFunc = (value) => {
+    console.log("value>>>>>", value)
     ShowMockup(value);
     SetContinuoMockup(value);
   };
 
   const HandleMokeUpOperation = () => {
-    ShowMockup(false);
+    ShowMockup("none");
+    
   };
 
   function join(t, a, s) {
@@ -179,13 +181,16 @@ function ClassExplore(buttonValue, ButtonOnClick, seats, id, level) {
   useEffect(() => {
     HandleBookng();
   }, []);
-
+const classBook =(data) => {
+  console.log("data>>>>>>>>>", data)
+}
   return (
     <div className="ClassExplore ">
-      {Mockup === true && (
+      {Mockup.data &&
+      Mockup.data.message=== 'No packeg booked' &&(
         <div className="schedule-mockup">
           <div className="dialog-box">
-            <p>Your booking was successfull</p>
+            <p>No package Booked</p>
             <div className="Answers-button">
               <button onClick={HandleMokeUpOperation}>Continue</button>
             </div>
@@ -236,6 +241,13 @@ function ClassExplore(buttonValue, ButtonOnClick, seats, id, level) {
           className="coure-explore-right-arrow"
           onClick={HandleForwardMoveSlider}
         />
+         <h1
+          className={`${ActiveButton == 1 && "active"}`}
+          id="10-Jul-2021"
+          onClick={(e) => setActiveButton(1)}
+        >
+          MON<span>1</span>
+        </h1>
         <h1
           className={`${ActiveButton == 2 && "active"}`}
           id="10-Jul-2021"
@@ -286,6 +298,7 @@ function ClassExplore(buttonValue, ButtonOnClick, seats, id, level) {
             id={EachCard.id}
             ButtonOnClick={ShowMockupFunc}
             key={EachCard.id}
+            classBook = {classBook}
           />
         ))}
         {NoData == true && (

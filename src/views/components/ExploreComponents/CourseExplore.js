@@ -37,10 +37,12 @@ function CourseExplore(buttonValue, ButtonOnClick, seats, id) {
   useEffect(() => {
     console.log(buttonValue);
     console.log(id);
+    let idd = cookies.get("gym_uuid")
     if (id && id !== 1) {
       axios
-        .get(BASE_URL + "gymprofile/get_course/" + id)
+        .get(BASE_URL + "gymprofile/get_course/" + id.uuid)
         .then((res) => {
+          console.log("Res")
           getcourse(res.data);
           // console.log()
         })

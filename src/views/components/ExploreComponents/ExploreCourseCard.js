@@ -13,12 +13,22 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   }, []);
 
   const [crs, getcourse] = useState([]);
+  const [getgym, setgym] = useState({});
+  useEffect(() => {
+    axios
+      .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
+      .then((res) => {
+        console.log("errgfvbbnhn>>>>>>>>>.",res.data)
+        setgym(res.data);
+      })
+      .catch((err) => {});
+  }, []);
   useEffect(() => {
     console.log(buttonValue);
     console.log(id);
     if (id && id !== 1) {
       axios
-        .get(BASE_URL + "gymprofile/get_course/" + id)
+        .get(BASE_URL + "gymprofile/get_course/" + id.uuid)
         .then((res) => {
           getcourse(res.data);
           // console.log()
@@ -33,15 +43,7 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   }, []);
 
   // ============GymPRofile==========
-  const [getgym, setgym] = useState({});
-  useEffect(() => {
-    axios
-      .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
-      .then((res) => {
-        setgym(res.data);
-      })
-      .catch((err) => {});
-  }, []);
+ 
 
   function shoot() {
     alert("Great Shot!");

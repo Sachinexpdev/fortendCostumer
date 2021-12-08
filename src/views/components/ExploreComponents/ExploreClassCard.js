@@ -62,6 +62,7 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
   // ============GymPRofile==========
 
   const [getgym, setgym] = useState([]);
+  const [bookclassApi, setBookClass] = useState(true)
   useEffect(() => {
     axios
       .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
@@ -69,12 +70,13 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
         setgym(res.data);
       })
       .catch((err) => {});
+      Bookclass(cls)
   }, []);
 
   // =========BOOK-CLASS=========
 
-  async function Bookclass(clas, id) {
-    debugger;
+  async function Bookclass(clas) {
+    // debugger;
     console.log(clas);
     var user_uuid = cookies.get("uuid");
     var class_uuid = clas.uuid;
@@ -98,17 +100,24 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
       };
       try {
         let res = await axios(config);
-
+        if (res.status === 208) {
+        setBookClass(true)
+        window.location = "/explore";
+        }
+        console.log("res>>>>>>>>>>>>>",res)
         if (res.status === 200 || res.status === 201) {
           console.log(res.status);
           console.log(res.data);
           console.log(id);
-          window.location = "/dashboard";
+          setBookClass(res)
+          // window.location = "/dashboard";
         }
         // Don't forget to return something
         return res.data;
+
       } catch (err) {
-        alert("Signup Failed , Please try again.");
+        setBookClass(false)
+        // alert("Booking failed");
         //  window.location='/explore'
         //  alert(err)
       }
@@ -165,7 +174,7 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
 
           <div className="second-col">
             <p>
-              Address<span>{cls.location}</span>
+              Address<span>{cls.location}</span> 
               {/* Address<span>{cls.class_address}</span> */}
               {/* {cls.class_gender} */}
               {/* <span>w/ Lucy</span> */}
@@ -175,20 +184,19 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
 
           <div className="cancel-button-wrapper">
             <div>
-              {/* {parseInt(cls.start_time.split(':')[0])> d.getHours() || parseInt(cookies.get('date').split(' ')[0])>d.getDay()+1? */}
+              
               <button
                 className={"book-btn " + cookies.get("theme")}
                 id={`book-${id}`}
                 style={{ display: "block" }}
                 onClick={(e) => {
-                  ButtonOnClick(true);
-                  Bookclass(cls, id);
+                  ButtonOnClick(bookclassApi);
+                  Bookclass(cls);
                 }}
+                
               >
                 {buttonValue}
               </button>
-              {/* :<p>Class Already started</p>} */}
-
               <button
                 id={`booked-${id}`}
                 className="booked-button"
