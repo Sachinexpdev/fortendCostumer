@@ -3,6 +3,7 @@ import { HandleBookng } from "../../../assets/js/Events/HandleBooking";
 import Cookies from "universal-cookie";
 import BASE_URL from "../../pages/base";
 import Loader from "../../../assets/img/loader";
+import { Modal } from "react-responsive-modal";
 import $ from "jquery";
 import { useHistory, useParams } from "react-router";
 
@@ -62,7 +63,7 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
   // ============GymPRofile==========
 
   const [getgym, setgym] = useState([]);
-  const [bookclassApi, setBookClass] = useState(true)
+  const [bookclassApi, setBookClass] = useState(true);
   useEffect(() => {
     axios
       .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
@@ -70,7 +71,7 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
         setgym(res.data);
       })
       .catch((err) => {});
-      Bookclass(cls)
+    Bookclass(cls);
   }, []);
 
   // =========BOOK-CLASS=========
@@ -101,22 +102,21 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
       try {
         let res = await axios(config);
         if (res.status === 208) {
-        setBookClass(true)
-        window.location = "/explore";
+          setBookClass(true);
+          window.location = "/explore";
         }
-        console.log("res>>>>>>>>>>>>>",res)
+        console.log("res>>>>>>>>>>>>>", res);
         if (res.status === 200 || res.status === 201) {
           console.log(res.status);
           console.log(res.data);
           console.log(id);
-          setBookClass(res)
+          setBookClass(res);
           // window.location = "/dashboard";
         }
         // Don't forget to return something
         return res.data;
-
       } catch (err) {
-        setBookClass(false)
+        setBookClass(false);
         // alert("Booking failed");
         //  window.location='/explore'
         //  alert(err)
@@ -174,7 +174,7 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
 
           <div className="second-col">
             <p>
-              Address<span>{cls.location}</span> 
+              Address<span>{cls.location}</span>
               {/* Address<span>{cls.class_address}</span> */}
               {/* {cls.class_gender} */}
               {/* <span>w/ Lucy</span> */}
@@ -184,7 +184,6 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
 
           <div className="cancel-button-wrapper">
             <div>
-              
               <button
                 className={"book-btn " + cookies.get("theme")}
                 id={`book-${id}`}
@@ -193,7 +192,6 @@ const ExploreClassCard = ({ buttonValue, ButtonOnClick, seats, id }) => {
                   ButtonOnClick(bookclassApi);
                   Bookclass(cls);
                 }}
-                
               >
                 {buttonValue}
               </button>

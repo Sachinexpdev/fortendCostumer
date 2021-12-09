@@ -3,6 +3,9 @@ import { HandleBookng } from "../../../assets/js/Events/HandleBooking";
 import BASE_URL from "../../pages/base";
 import Cookies from "universal-cookie";
 import ReactTooltip from "react-tooltip";
+import { Modal } from "react-responsive-modal";
+import $ from "jquery";
+import { toastr } from "react-redux-toastr";
 const cookies = new Cookies();
 const axios = require("axios");
 const d = new Date();
@@ -14,11 +17,14 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
 
   const [crs, getcourse] = useState([]);
   const [getgym, setgym] = useState({});
+  const [open, setOpen] = useState(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
   useEffect(() => {
     axios
       .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
       .then((res) => {
-        console.log("errgfvbbnhn>>>>>>>>>.",res.data)
+        console.log("errgfvbbnhn>>>>>>>>>.", res.data);
         setgym(res.data);
       })
       .catch((err) => {});
@@ -43,7 +49,6 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   }, []);
 
   // ============GymPRofile==========
- 
 
   function shoot() {
     alert("Great Shot!");
@@ -92,47 +97,142 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   //    }
   // }
   // }
-
-  async function Bookcourse(clas, id) {
+  function ApplyPromocode(price) {
     // debugger
-    console.log(clas);
-    var user_uuid = cookies.get("uuid");
-    var course_uuid = clas.uuid;
-    var gym_id = cookies.get("gym_id");
-    var date = cookies.get("date");
+    alert(price);
+    var url = BASE_URL + "payments/promo";
+    // var gym = ;
+    // var uuid = ;
+    var code = document.getElementById("code").value;
+    var i_amount = price;
+    var config = {
+      method: "post",
+      url: url,
+      data: {
+        gym: cookies.get("gym_id"),
+        uuid: cookies.get("uuid"),
+        initial_amount: i_amount,
+        coupon_code: code,
+      },
+    };
+    axios(config)
+      .then((re) => {
+        cookies.set("price", re.data.data.final_price, { path: "/" });
+        alert(re.data.data.final_price);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }
+  async function packagepuchase(data) {
+    // console.clear();
+    console.log("data>>>>>>>>>>>>>", data);
+    let cokkiesData = {
+      subscription_user: cookies.get("uuid"),
+      // package_purchased:cookies.get('package_purchased'),
+      // package_purchased:data.package_name,
+      // package_class_passes:data.class_count,
+
+      gym: cookies.get("gym_id"),
+      package_id: cookies.get("pack_uuid"),
+      package_purchased: cookies.get("title"),
+      package_class_passes: cookies.get("class_passes"),
+      passes: cookies.get("class_passes"),
+    };
+    console.log("cookiesData", cokkiesData);
+    // debugger
+
     {
       console.log("Trying to send request");
-      // e.preventDefault();
-      var config = {
-        method: "post",
-        url: BASE_URL + "user/bookcourse/list/",
-        headers: {
-          "content-type": `application/json`,
-        },
-        data: {
-          select_user: user_uuid,
-          select_courses: course_uuid,
-          gym: gym_id,
-          date: date,
-        },
-      };
-      try {
-        let res = await axios(config);
+      // alert(data.uuid)
 
-        if (res.status === 200 || res.status === 201) {
+      console.log(data);
+      try {
+        $(".laoder").show();
+        // console.log("basae_url", BASE_URL +)
+        let res = await axios.post(BASE_URL + "user/subscription/user/", {
+          subscription_user: cookies.get("uuid"),
+          // package_purchased:cookies.get('package_purchased'),
+          // package_purchased:data.package_name,
+          // package_class_passes:data.class_count,
+
+          gym: cookies.get("gym_id"),
+          package_id: cookies.get("pack_uuid"),
+          package_purchased: cookies.get("title"),
+          package_class_passes: cookies.get("class_passes"),
+          passes: cookies.get("class_passes"),
+        });
+        console.log("res>>>>>>>>>>>>>>>>>>>>>>>>", res);
+        if (res.status === 200) {
+          // debugger
+          cookies.remove("pack_uuid", { path: "/" });
+          toastr.success("Payment Sucessfully Done");
           console.log(res.status);
+          console.log(cookies.get("uuid"));
           console.log(res.data);
-          console.log(id);
-          window.location = "/dashboard";
+
+          setTimeout(function () {
+            window.location = "/dashboard";
+          }, 3000);
         }
+
+        if (res.status === 404) {
+          // debugger
+          // console.log(res);
+          alert(res.status);
+        }
+        // debugger
         // Don't forget to return something
         return res.data;
       } catch (err) {
-        alert("Signup Failed , Please try again.");
-        //  window.location='/explore'
-        //  alert(err)
+        console.log(err.res);
+        // console.error('Signup Failed , Please try again.');
+        $(".laoder").hide();
+        toastr.error("payment Not Done.");
+        setTimeout(function () {}, 3000);
+        alert(err);
       }
     }
+  }
+  async function Bookcourse(clas, id) {
+    // debugger
+    // console.log(clas);
+    // var user_uuid = cookies.get("uuid");
+    // var course_uuid = clas.uuid;
+    // var gym_id = cookies.get("gym_id");
+    // var date = cookies.get("date");
+    // {
+    //   console.log("Trying to send request");
+    //   // e.preventDefault();
+    //   var config = {
+    //     method: "post",
+    //     url: BASE_URL + "user/bookcourse/list/",
+    //     headers: {
+    //       "content-type": `application/json`,
+    //     },
+    //     data: {
+    //       select_user: user_uuid,
+    //       select_courses: course_uuid,
+    //       gym: gym_id,
+    //       date: date,
+    //     },
+    //   };
+    //   try {
+    //     let res = await axios(config);
+    //     if (res.status === 200 || res.status === 201) {
+    //       console.log(res.status);
+    //       console.log(res.data);
+    //       console.log(id);
+    //       window.location = "/dashboard";
+    //     }
+    //     // Don't forget to return something
+    //     return res.data;
+    //   } catch (err) {
+    //     alert("Signup Failed , Please try again.");
+    //     //  window.location='/explore'
+    //     //  alert(err)
+    //   }
+    // }
   }
 
   return (
@@ -234,6 +334,7 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
               <button
                 className={"book-btn " + cookies.get("theme")}
                 onClick={(e) => {
+                  onOpenModal();
                   Bookcourse(crs, id);
                 }}
               >
@@ -266,6 +367,91 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
           </div>
         </div>
       )}
+      {/************ Modal Section ************/}
+      <Modal open={open} onClose={onCloseModal} center>
+        <h2>Amount :</h2>
+
+        <div className="col-md-12 m-auto buy-modal-main">
+          <div id="x"></div>
+          {/* <div class="form-group">
+                <input type="text" class="form-control" defaultValue={cookies.get("title")} />
+              </div>
+
+              <div class="form-group">
+                <input type="text" class="form-control" defaultValue={cookies.get("class_passes")} />
+              </div> */}
+
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="usr"
+              placeholder="Email"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="usr"
+              placeholder="Card Number"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="usr"
+              placeholder="MM / YY"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="usr"
+              placeholder="CVV"
+            />
+          </div>
+
+          <div class="form-group promo-code-inp-main">
+            <input
+              id="code"
+              type="text"
+              class="form-control"
+              name="email"
+              placeholder="Promo code"
+            />
+            <span class="input-group-addon">
+              {" "}
+              <button
+                onClick={() =>
+                  ApplyPromocode(cookies.get("data").package_price)
+                }
+                className="btn-apply-pc"
+              >
+                {" "}
+                Apply{" "}
+              </button>{" "}
+            </span>
+          </div>
+
+          <div class="modal-footer py-footer">
+            <div className="col-md-12 text-center">
+              <button
+                type="button"
+                onClick={() => packagepuchase(cookies.get("data"))}
+                class="btn-paynow"
+              >
+                Pay Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
