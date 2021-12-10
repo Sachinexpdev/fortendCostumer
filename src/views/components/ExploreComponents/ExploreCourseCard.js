@@ -21,7 +21,7 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-  
+
   useEffect(() => {
     axios
       .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
@@ -29,7 +29,7 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
         console.log("errgfvbbnhn>>>>>>>>>.", res.data);
         setgym(res.data);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   }, []);
 
   useEffect(() => {
@@ -57,10 +57,10 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
     if (dt_obj.includes("-")) {
       var dt_splits = dt_obj.split("-");
       dt_obj = dt_splits[0] + " " + dt_splits[1] + " " + dt_splits[2];
-      console.log("dtObj", dt_obj)
+      console.log("dtObj", dt_obj);
       cookies.set("date", dt_obj, { path: "/" });
     }
-   
+
     // alert('here')
     // alert(e.target.value)
     // var dt_obj = e.target.value
@@ -73,8 +73,8 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
       dt_obj = dt_splits[0] + " " + dt_splits[1] + " " + dt_splits[2];
       cookies.set("date", dt_obj, { path: "/" });
     }
-  // ============GymPRofile==========
-  }
+    // ============GymPRofile==========
+  };
   function shoot() {
     alert("Great Shot!");
     console.log("hello");
@@ -151,14 +151,14 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   }
   async function packagepuchase(clas, id) {
     // console.clear();
-    
+
     var user_uuid = cookies.get("uuid");
     var course_uuid = clas.uuid;
     var gym_id = cookies.get("gym_id");
     var date = cookies.get("date");
-    date = `${d.getDay()} ${d.toString().split(" ")[1]} ${d.getFullYear()}`
+    date = `${d.getDay()} ${d.toString().split(" ")[1]} ${d.getFullYear()}`;
 
-    console.log("date>>>>>>>>>>>>>", date)
+    console.log("date>>>>>>>>>>>>>", date);
     {
       console.log("Trying to send request");
       // e.preventDefault();
@@ -169,11 +169,10 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
           "content-type": `application/json`,
         },
         data: {
-          select_user: user_uuid,  
+          select_user: user_uuid,
           gym_id: gym_id,
-          select_courses : course_uuid,
+          select_courses: course_uuid,
           date: date,
-        
         },
       };
       try {
@@ -188,14 +187,14 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
         // Don't forget to return something
         return res.data;
       } catch (err) {
-        console.err(err)
+        console.err(err);
         // alert("Signup Failed , Please try again.");
         //  window.location='/explore'
         //  alert(err)
       }
     }
   }
-  
+
   async function Bookcourse(clas, id) {
     // debugger
     // console.log(clas);
@@ -333,25 +332,23 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
            {buttonValue}
           </button> */}
 
-              <button
-                className={"book-btn " + cookies.get("theme")}
-                onClick={(e) => {
-                  getClassesObjs(e);
-                  onOpenModal();
-                  Bookcourse(crs, id);
-                 
-                }}
-              >
-                {buttonValue}
-              </button>
+              {crs.is_booked === false && (
+                <button
+                  className={"book-btn " + cookies.get("theme")}
+                  onClick={(e) => {
+                    onOpenModal();
+                    Bookcourse(crs, id);
+                  }}
+                >
+                  {buttonValue}
+                </button>
+              )}
 
-              <button
-                id={`booked-${id}`}
-                className="booked-button"
-                style={{ display: "none" }}
-              >
-                Booked
-              </button>
+              {crs.is_booked === true && (
+                <button id={`booked-${id}`} style={{ backgroundColor: "gray" }}>
+                  Booked
+                </button>
+              )}
 
               <button
                 id={`cancel-${id}`}
