@@ -6,10 +6,11 @@ import ReactTooltip from "react-tooltip";
 import { Modal } from "react-responsive-modal";
 import $ from "jquery";
 import { toastr } from "react-redux-toastr";
-const cookies = new Cookies();
+
 const axios = require("axios");
 const d = new Date();
 
+const cookies = new Cookies();
 function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   useEffect(() => {
     HandleBookng();
@@ -20,6 +21,7 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+  
   useEffect(() => {
     axios
       .get(BASE_URL + "gymprofile/gym/" + cookies.get("gym_id"))
@@ -27,8 +29,9 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
         console.log("errgfvbbnhn>>>>>>>>>.", res.data);
         setgym(res.data);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
+
   useEffect(() => {
     console.log(buttonValue);
     console.log(id);
@@ -44,12 +47,34 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
         });
     }
   }, []);
+
   useEffect(() => {
     HandleBookng();
   }, []);
+  function getClassesObjs(e) {
+    // alert(e.target.id)
+    var dt_obj = e.target.id;
+    if (dt_obj.includes("-")) {
+      var dt_splits = dt_obj.split("-");
+      dt_obj = dt_splits[0] + " " + dt_splits[1] + " " + dt_splits[2];
+      console.log("dtObj", dt_obj)
+      cookies.set("date", dt_obj, { path: "/" });
+    }
+   
+    // alert('here')
+    // alert(e.target.value)
+    // var dt_obj = e.target.value
 
+    getClas(dt_obj);
+  }
+  const getClas = (dt_obj) => {
+    if (dt_obj.includes("-")) {
+      var dt_splits = dt_obj.split("-");
+      dt_obj = dt_splits[0] + " " + dt_splits[1] + " " + dt_splits[2];
+      cookies.set("date", dt_obj, { path: "/" });
+    }
   // ============GymPRofile==========
-
+  }
   function shoot() {
     alert("Great Shot!");
     console.log("hello");
@@ -124,76 +149,53 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
         alert(err);
       });
   }
-  async function packagepuchase(data) {
+  async function packagepuchase(clas, id) {
     // console.clear();
-    console.log("data>>>>>>>>>>>>>", data);
-    let cokkiesData = {
-      subscription_user: cookies.get("uuid"),
-      // package_purchased:cookies.get('package_purchased'),
-      // package_purchased:data.package_name,
-      // package_class_passes:data.class_count,
+    
+    var user_uuid = cookies.get("uuid");
+    var course_uuid = clas.uuid;
+    var gym_id = cookies.get("gym_id");
+    var date = cookies.get("date");
+    date = `${d.getDay()} ${d.toString().split(" ")[1]} ${d.getFullYear()}`
 
-      gym: cookies.get("gym_id"),
-      package_id: cookies.get("pack_uuid"),
-      package_purchased: cookies.get("title"),
-      package_class_passes: cookies.get("class_passes"),
-      passes: cookies.get("class_passes"),
-    };
-    console.log("cookiesData", cokkiesData);
-    // debugger
-
+    console.log("date>>>>>>>>>>>>>", date)
     {
       console.log("Trying to send request");
-      // alert(data.uuid)
-
-      console.log(data);
+      // e.preventDefault();
+      var config = {
+        method: "post",
+        url: BASE_URL + "user/bookcourse/list/",
+        headers: {
+          "content-type": `application/json`,
+        },
+        data: {
+          select_user: user_uuid,  
+          gym_id: gym_id,
+          select_courses : course_uuid,
+          date: date,
+        
+        },
+      };
       try {
-        $(".laoder").show();
-        // console.log("basae_url", BASE_URL +)
-        let res = await axios.post(BASE_URL + "user/subscription/user/", {
-          subscription_user: cookies.get("uuid"),
-          // package_purchased:cookies.get('package_purchased'),
-          // package_purchased:data.package_name,
-          // package_class_passes:data.class_count,
+        let res = await axios(config);
 
-          gym: cookies.get("gym_id"),
-          package_id: cookies.get("pack_uuid"),
-          package_purchased: cookies.get("title"),
-          package_class_passes: cookies.get("class_passes"),
-          passes: cookies.get("class_passes"),
-        });
-        console.log("res>>>>>>>>>>>>>>>>>>>>>>>>", res);
-        if (res.status === 200) {
-          // debugger
-          cookies.remove("pack_uuid", { path: "/" });
-          toastr.success("Payment Sucessfully Done");
+        if (res.status === 200 || res.status === 201) {
           console.log(res.status);
-          console.log(cookies.get("uuid"));
           console.log(res.data);
-
-          setTimeout(function () {
-            window.location = "/dashboard";
-          }, 3000);
+          console.log(id);
+          window.location = "/dashboard";
         }
-
-        if (res.status === 404) {
-          // debugger
-          // console.log(res);
-          alert(res.status);
-        }
-        // debugger
         // Don't forget to return something
         return res.data;
       } catch (err) {
-        console.log(err.res);
-        // console.error('Signup Failed , Please try again.');
-        $(".laoder").hide();
-        toastr.error("payment Not Done.");
-        setTimeout(function () {}, 3000);
-        alert(err);
+        console.err(err)
+        // alert("Signup Failed , Please try again.");
+        //  window.location='/explore'
+        //  alert(err)
       }
     }
   }
+  
   async function Bookcourse(clas, id) {
     // debugger
     // console.log(clas);
@@ -334,8 +336,10 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
               <button
                 className={"book-btn " + cookies.get("theme")}
                 onClick={(e) => {
+                  getClassesObjs(e);
                   onOpenModal();
                   Bookcourse(crs, id);
+                 
                 }}
               >
                 {buttonValue}
@@ -443,7 +447,7 @@ function ExploreCourseCard({ buttonValue, ButtonOnClick, seats, id }) {
             <div className="col-md-12 text-center">
               <button
                 type="button"
-                onClick={() => packagepuchase(cookies.get("data"))}
+                onClick={() => packagepuchase(crs, id)}
                 class="btn-paynow"
               >
                 Pay Now
